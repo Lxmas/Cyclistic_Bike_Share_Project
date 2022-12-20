@@ -122,6 +122,27 @@ from [PortfolioProject].[dbo].[1yeartripdata_complete]
 group by member_casual, day_of_week
 order by 2,3 desc
 
+
+------ Number of rides on week days and weekends
+
+
+select member_casual
+, count(ride_id) as total_rides_week_days
+from [PortfolioProject].[dbo].[1yeartripdata_complete]
+where day_of_week <6
+group by member_casual
+
+select member_casual
+, count(ride_id) as total_rides_weekends
+from [PortfolioProject].[dbo].[1yeartripdata_complete]
+where day_of_week >5
+group by member_casual
+
+select member_casual
+, count(ride_id) as total_rides
+from [PortfolioProject].[dbo].[1yeartripdata_complete]
+group by member_casual
+
 ------------ day of week analysis 
 with CTE_1yeartripdata as
 
